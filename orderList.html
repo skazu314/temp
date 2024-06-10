@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const buttons = document.querySelectorAll(".dropdown-button");
+                buttons.forEach(button => {
+                    button.addEventListener("click", function() {
+                        const orderRow = this.closest("tr");
+                        const orderName = orderRow.getAttribute("name");
+                        const detailRows = document.querySelectorAll(`tr[name^='${orderName}_detail']`);
+                        detailRows.forEach(detailRow => {
+                            if (detailRow.classList.contains("hidden")) {
+                                detailRow.classList.remove("hidden");
+                                detailRow.classList.add("show");
+                            } else {
+                                detailRow.classList.remove("show");
+                                detailRow.classList.add("hidden");
+                            }
+                        });
+                    });
+                });
+            });
+        </script>
+        <style>
+            .show {
+                display: table-row;
+            }
+
+            .hidden {
+                display: none;
+            }
+
+            .dropdown-button {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 10px 20px; /* 左右のパディングを同じにする */
+                font-size: 16px;
+                font-weight: bold;
+                color: white;
+                background-color: #007BFF;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                position: relative;
+            }
+
+            .dropdown-button::after {
+                content: '';
+                display: inline-block;
+                margin-left: 0px; /* 三角形の左余白 */
+                width: 0;
+                height: 0;
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-top: 5px solid white;
+            }
+
+            .dropdown-button:hover {
+                background-color: #0056b3; /* ホバー時の背景色変更 */
+            }
+
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            th, td {
+                padding: 8px;
+                text-align: left;
+            }
+
+            /* 1列目の罫線を非表示にする */
+            th:first-child,
+            td:first-child {
+                border-left: none;
+            }
+
+            /* detailという名前を含む行の1列目と2列目の罫線を非表示にする */
+            tr[name*="detail"] td:first-child,
+            tr[name*="detail"] td:nth-child(2) {
+                border: none;
+            }
+        </style>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <th></th>
+                <th>注文番号</th>
+                <th>注文日</th>
+                <th>注文内容</th>
+                <th>注文金額</th>
+            </tr>
+            <tr name="order1">
+                <td><button class="dropdown-button" aria-label="dropdown"></button></td>
+                <td>000000</td>
+                <td>2024/01/01</td>
+                <td>ホテルなど</td>
+                <td>¥999,999</td>
+            </tr>
+            <tr name="order1_detail1" class="hidden">
+                <td></td>
+                <td></td>
+                <td>┣</td>
+                <td>ホテル1</td>
+                <td>¥499,999</td>
+            </tr>
+            <tr name="order1_detail2" class="hidden">
+                <td></td>
+                <td></td>
+                <td>┗</td>
+                <td>ホテル2</td>
+                <td>¥500,000</td>
+            </tr>
+            <tr name="order2">
+                <td><button class="dropdown-button" aria-label="dropdown"></button></td>
+                <td>000001</td>
+                <td>2024/01/01</td>
+                <td>ホテルなど</td>
+                <td>¥999,999</td>
+            </tr>
+            <tr name="order2_detail1" class="hidden">
+                <td></td>
+                <td></td>
+                <td>┣</td>
+                <td>ホテル1</td>
+                <td>¥499,999</td>
+            </tr>
+            <tr name="order2_detail2" class="hidden">
+                <td></td>
+                <td></td>
+                <td>┗</td>
+                <td>ホテル2</td>
+                <td>¥500,000</td>
+            </tr>
+        </table>
+    </body>
+</html>
