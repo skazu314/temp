@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Header</title>
+    <link async rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2/dist/semantic.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui-react/dist/umd/semantic-ui-react.min.js"></script>
+</head>
+
+<body>
+
+    <div id="menubar">
+        <style>
+            .left-menu {
+                position: fixed;
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 250px;
+                background-color: #f9f9f9;
+                box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                display: none;
+                /* Initially hidden */
+                z-index: 1001;
+                /* Ensures the menu is above other content */
+            }
+    
+            .main-content {
+                margin-left: 20px;
+                /* Adjusted for the menu button */
+            }
+    
+            .menu-button {
+                position: fixed;
+                top: 10px;
+                left: 10px;
+                z-index: 1000;
+                /* Ensures the button is above other content */
+            }
+    
+            .overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                display: none;
+                /* Initially hidden */
+                z-index: 1000;
+                /* Ensures the overlay is above other content */
+            }
+    
+            .user-info {
+                position: absolute;
+                bottom: 20px;
+                width: 90%;
+                text-align: center;
+            }
+    
+            .highlighted-item {
+                background-color: #e0f7fa;
+            }
+        </style>
+    
+        <script defer>
+            function toggleMenu() {
+                var menu = document.getElementById('leftMenu');
+                var button = document.getElementById('menuButton');
+                var overlay = document.getElementById('overlay');
+    
+                if (menu.style.display === 'none' || menu.style.display === '') {
+                    menu.style.display = 'block';
+                    button.style.display = 'none';
+                    overlay.style.display = 'block';
+                } else {
+                    menu.style.display = 'none';
+                    button.style.display = 'block';
+                    overlay.style.display = 'none';
+                }
+            }
+    
+            function closeMenu() {
+                document.getElementById('leftMenu').style.display = 'none';
+                document.getElementById('menuButton').style.display = 'block';
+                document.getElementById('overlay').style.display = 'none';
+            }
+    
+            function logout() {
+                // ログアウト処理をここに追加
+                alert('ログアウトしました');
+            }
+        </script>
+
+        <button class="ui icon button menu-button" id="menuButton" onclick="toggleMenu()">
+            <i class="bars icon"></i>
+        </button>
+    
+        <div class="left-menu" id="leftMenu">
+            <div class="item">
+               <h2>All-Out Enquete System</h2> 
+            </div>
+            <div class="ui vertical menu">
+                <a class="ui item blue">アンケート回答</a>
+                <a class="item">アンケート管理</a>
+                <a class="item highlighted-item">アンケート新規作成</a>
+            </div>
+            <div class="user-info">
+                <div class="ui divider"></div>
+                <p>ログイン中: <strong>田中 太郎</strong></p>
+                <button class="ui button" onclick="logout()">ログアウト</button>
+            </div>
+        </div>
+    
+        <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+    </div>
+
+    <div class="ui container main-content">
+        <h1>メインコンテンツ</h1>
+        <p>ここにメインコンテンツを追加します。</p>
+    </div>
+</body>
+
+</html>
