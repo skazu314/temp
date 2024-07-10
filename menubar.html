@@ -25,12 +25,12 @@
                 z-index: 1001;
                 /* Ensures the menu is above other content */
             }
-    
+
             .main-content {
                 margin-left: 20px;
                 /* Adjusted for the menu button */
             }
-    
+
             .menu-button {
                 position: fixed;
                 top: 10px;
@@ -38,7 +38,7 @@
                 z-index: 1000;
                 /* Ensures the button is above other content */
             }
-    
+
             .overlay {
                 position: fixed;
                 top: 0;
@@ -51,25 +51,25 @@
                 z-index: 1000;
                 /* Ensures the overlay is above other content */
             }
-    
+
             .user-info {
                 position: absolute;
                 bottom: 20px;
                 width: 90%;
                 text-align: center;
             }
-    
+
             .highlighted-item {
-                background-color: #e0f7fa;
+                background-color: #00e1ff;
             }
         </style>
-    
+
         <script defer>
             function toggleMenu() {
                 var menu = document.getElementById('leftMenu');
                 var button = document.getElementById('menuButton');
                 var overlay = document.getElementById('overlay');
-    
+
                 if (menu.style.display === 'none' || menu.style.display === '') {
                     menu.style.display = 'block';
                     button.style.display = 'none';
@@ -80,13 +80,13 @@
                     overlay.style.display = 'none';
                 }
             }
-    
+
             function closeMenu() {
                 document.getElementById('leftMenu').style.display = 'none';
                 document.getElementById('menuButton').style.display = 'block';
                 document.getElementById('overlay').style.display = 'none';
             }
-    
+
             function logout() {
                 // ログアウト処理をここに追加
                 alert('ログアウトしました');
@@ -96,15 +96,16 @@
         <button class="ui icon button menu-button" id="menuButton" onclick="toggleMenu()">
             <i class="bars icon"></i>
         </button>
-    
+
         <div class="left-menu" id="leftMenu">
             <div class="item">
-               <h2>All-Out Enquete System</h2> 
+                <h2>All-Out Enquete System</h2>
             </div>
             <div class="ui vertical menu">
-                <a class="ui item blue">アンケート回答</a>
-                <a class="item">アンケート管理</a>
-                <a class="item highlighted-item">アンケート新規作成</a>
+                <div class="highlighted-item">
+                    <a class="item">選択済みのページ</a>
+                </div>
+                <a class="item">未選択のページ</a>
             </div>
             <div class="user-info">
                 <div class="ui divider"></div>
@@ -112,7 +113,7 @@
                 <button class="ui button" onclick="logout()">ログアウト</button>
             </div>
         </div>
-    
+
         <div class="overlay" id="overlay" onclick="closeMenu()"></div>
     </div>
 
@@ -120,6 +121,7 @@
         <h1>メインコンテンツ</h1>
         <p>ここにメインコンテンツを追加します。</p>
     </div>
+
 </body>
 
 </html>
