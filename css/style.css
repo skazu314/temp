@@ -1,0 +1,100 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 70%;
+    margin: 50px auto;
+}
+
+#sortable-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* 追加するCSS */
+.sortable-item {
+    position: relative; /* 必要な位置指定のためにrelativeに設定 */
+    margin: 15px;
+    cursor: grab;
+    user-select: none;
+}
+
+.delete-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10; /* ボタンが他のコンテンツの上に表示されるようにする */
+}
+
+.sortable-item:hover {
+    background-color: #ffffff;
+}
+
+.sortable-ghost {
+    opacity: 0.4;
+}
+
+.itemArea {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border: #000 solid 1px;
+    border-radius: 10px;
+}
+
+.itemArea input {
+    width: 50%;
+    margin-bottom: 5px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.toggle-container {
+    position: relative;
+    width: 60px;
+    height: 30px;
+    background-color: #ccc;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 0px 30px 0 10px;
+    display: flex;
+    align-items: center;
+}
+
+.toggle-container.on {
+    background-color: #4caf50;
+}
+
+.toggle-circle {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    background-color: white;
+    border-radius: 50%;
+    transition: left 0.3s;
+}
+
+.toggle-container.on .toggle-circle {
+    left: 33px;
+}
+
+/* selectとpタグのスタイル調整 */
+select, p {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+}
+
+/* フレックスボックスの子要素に対する調整 */
+.flex-container {
+    display: flex;
+    align-items: center;
+}
